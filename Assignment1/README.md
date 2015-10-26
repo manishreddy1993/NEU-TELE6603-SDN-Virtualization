@@ -12,7 +12,7 @@ As a part of the assignment, I have made use of Mininet emulator, Oracle VM Virt
 ####The steps that were followed during the setup are:
  
 1. Download the Mininet VM image: [https://github.com/mininet/mininet/wiki/Mininet-VM-Images](https://github.com/mininet/mininet/wiki/Mininet-VM-Images) . 
-This image comes with pox controller installed along with openvswitch.
+This image comes with pox controller installed along with openvswitch. Wireshark is also installed by default.
 2. Download the virtualization tool called VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 3. Download XMing for X11 forwarding: [http://sourceforge.net/projects/xming/](http://sourceforge.net/projects/xming/)
 
@@ -45,6 +45,23 @@ FlowMod Message - This is one of the main messages, it allows the controller to 
 [Set Configuration Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/7)
 
 SetConfiguration - The controller sends the OFPT_SET_CONFIG message to the switch. This includes the set of flags and Max bytes of packet that datapath should send to the controller.
+
+#####Question 2
+
+Develop and test an OpenFlow 1.5.1 [OpenFlow 1.5.1] (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
+
+a. Take the code of a simple hub
+
+#####Question 3
+
+Develop and test an SDN-enabled IPv4 router:
+
+a. Write and test(by writing router application) the TTL decrement(vendor extension) to beacon
+
+b. For example, you can implement LPM, ARP and ping handling
+
+
+
 
 
 
