@@ -18,10 +18,36 @@ This image comes with pox controller installed along with openvswitch.
 
 The following openFlow messages are found when the openvswitch and controller were up.
 
-1. Features - Upon TLS(Transport Layer Security) session establishment, the controller sends a features request message to the switch. The switch must reply with a features reply that specifies the capabilities supported by the switch.  
-
 [Features Request Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/1)
+
 [Features Reply Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/2)
+
+Features - Upon TLS(Transport Layer Security) session establishment, the controller sends a features request message to the switch. The switch must reply with a features reply that specifies the capabilities supported by the switch.  
+
+[Hello Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/3)
+
+Hello - Hello messages are exchanged between the switch and controller upon connection startup. Hello is used by either controller or switch during connection setup. It is used for version negotiation. When the connection is established, each side must immediately send a Hello message with the version field set to the highest version supported by the sender. If the version negotiation fails, an Error message is sent with type HelloFailed and code Incompatible. The Hello message has no body, it is comprised of only a header. However, uninterpreted data is allowed in the payload for future and proprietary development.
+
+[Echo Request and Reply Messages](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/4)
+
+Echo - Echo request/reply messages can be sent from either the switch or the controller, and must return an echo reply. They can be used to indicate the latency, bandwidth, and/or liveness of a controller-switch connection.
+
+[Barrier Request and Reply Messages](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/5) 
+
+Barrier - Barrier request/reply messages are used by the controller to ensure message dependencies have been met or to receive notifications for completed operations. This message is initiated by the controller. The OpenFlow controller sends a Barrier Request message to request that the OpenFlow-enabled switch complete processing of all messages sent before the Barrier Request message before processing any messages sent after the Barrier Request message. This ensures that the virtual switch processes all message dependencies and sends all notifications for completed operations before proceeding with new requests.
+When the OpenFlow virtual switch receives a Barrier Request message, it queues all subsequent incoming messages, with the exception of echo request and reply messages, until processing of all prior messages is complete. Echo request and reply messages are required to maintain connectivity to the controller.
+When the switch completes an operation, it sends a reply message back to the controller. Only after the reply is sent to the controller does the switch mark the message or operation as processed. After the switch completes processing for all operations requested prior to the Barrier Request message, the switch sends a Barrier Reply (OFPT_BARRIER_REPLY) message, which includes the ID of the original request message, to the OpenFlow controller. At that point, the switch resumes processing of the queued messages.
+
+[FlowMod Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/6)
+
+FlowMod Message - This is one of the main messages, it allows the controller to modify the state of an OpenFlow switch; All FlowMod messages begin with the standard OpenFlow header, containing the appropriate version and type values, followed by the FlowMod structure. This message begins with the standard header and is followed by match, a cookie, which is an opaque field set by the controller, and command which specifies the type of flow table modification. This is followed by idle_timeout, hard_timeout and priority. Idle_timeout and hard_timeout represent number of seconds since packet inactivity and creation since expiration, respectively. Priority implies an order for matches that overlap with higher numbers representing higher priorities. Next in the FlowMod are buffer_id, out_port and flags. Buffer_id is the id of buffered packet that created a packet_in, make FlowMod and then reprocess the packet. Flag is set whether the flow can: send FlowRemoved, send Error if overlap, or function only if controller connectivity is lost. Finally, actions specifies what actions should be taken for matching packets.
+
+[Set Configuration Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/7)
+
+SetConfiguration - The controller sends the OFPT_SET_CONFIG message to the switch. This includes the set of flags and Max bytes of packet that datapath should send to the controller.
+
+
+
 
 
 
