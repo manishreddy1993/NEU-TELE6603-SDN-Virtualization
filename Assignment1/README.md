@@ -16,7 +16,7 @@ This image comes with pox controller installed along with openvswitch.
 2. Download the virtualization tool called VirtualBox: [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 3. Download XMing for X11 forwarding: [http://sourceforge.net/projects/xming/](http://sourceforge.net/projects/xming/)
 
-The following openFlow messages are found when the openvswitch and controller were up.
+The following openFlow 1.0 messages are found when the openvswitch and controller were up.
 
 [Features Request Message](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/1)
 
