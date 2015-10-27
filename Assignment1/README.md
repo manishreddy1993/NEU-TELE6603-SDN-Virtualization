@@ -71,10 +71,47 @@ Summary:
 Develop and test an OpenFlow 1.5.1  (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
 
 a. Take the code of a simple hub
+
 [Simple hub in pox controller](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/SimpleHub.py)
 
 b. Modify the above code in order to turn the hub into a learning switch
-[Learning switch](
+
+[Learning switch](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/LearningSwitch.py)
+
+  When we see a packet, we'd like to output it on a port which will
+  eventually lead to the destination.  To accomplish this, we build a
+  table that maps addresses to ports.
+  We populate the table by observing traffic.  When we see a packet
+  from some source coming from some port, we know that source is out
+  that port.
+  When we want to forward traffic, we look up the desintation in our
+  table.  If we don't know the port, we simply send the message out
+  all ports except the one it came in on.  (In the presence of loops,
+  this is bad!).
+  In short, our algorithm looks like this:
+  For each packet from the switch:
+ 
+ 1) Use source address and switch port to update address/port table
+  
+ 2) Is transparent = False and either Ethertype is LLDP or the packet's destination address is a Bridge Filtered address?
+  
+ If yes,Drop packet -- don't forward link-local traffic (LLDP, 802.1x)
+  
+ 3) Is destination multicast?
+  
+ If yes, Flood the packet
+
+ 4) Port for destination address in our address/port table?
+  
+ If No, Flood the packet
+
+ 5) Is output port the same as input port?
+  
+ If yes, Drop packet and similar ones for a while
+  
+ 6) Install flow table entry in the switch so that this
+ 
+ Flow goes out the appopriate port and  Send the packet out appropriate port
 
 c. Modify the above code to develop an OpenFlow 1.5.1 based learning switch
 
