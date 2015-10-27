@@ -46,6 +46,17 @@ FlowMod Message - This is one of the main messages, it allows the controller to 
 
 SetConfiguration - The controller sends the OFPT_SET_CONFIG message to the switch. This includes the set of flags and Max bytes of packet that datapath should send to the controller.
 
+Summary:
+1. Hello:	Controller->Switch	following the TCP handshake, the controller sends its version number to the switch.
+2. Hello:	Switch->Controller	the switch replies with its supported version number.
+3. Features Request:	Controller->Switch	the controller asks to see which ports are available.
+4. Set Config:	Controller->Switch	in this case, the controller asks the switch to send flow expirations.
+5. Features Reply:	Switch->Controller	the switch replies with a list of ports, port speeds, and supported tables and actions.
+6. Packet-In:	Switch->Controller	a packet was received and it didn't match any entry in the switch's flow table, causing the packet to be sent to the controller.
+7. Packet-Out:	Controller->Switch	controller send a packet out one or more switch ports.
+8. Flow-Mod:	Controller->Switch	instructs a switch to add a particular flow to its flow table.
+9. Flow-Expired:	Switch->Controller	a flow timed out after a period of inactivity.
+
 #####Question 2
 
 Develop and test an OpenFlow 1.5.1 [OpenFlow 1.5.1] (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
