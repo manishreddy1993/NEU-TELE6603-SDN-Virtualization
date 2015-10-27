@@ -68,9 +68,13 @@ Summary:
 
 #####Question 2
 
-Develop and test an OpenFlow 1.5.1 [OpenFlow 1.5.1] (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
+Develop and test an OpenFlow 1.5.1  (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
 
 a. Take the code of a simple hub
+b. Modify the above code in order to turn the hub into a learning switch
+c. Modify the above code to develop an OpenFlow 1.5.1 based learning switch
+
+
 
 #####Question 3
 
