@@ -74,13 +74,43 @@ a. Take the code of a simple hub
 
 [Simple hub in pox controller](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/SimpleHub.py)
 
+Wait until the application indicates that the OpenFlow switch has connected. When the switch connects, POX will print something like this:
+
+----------
+ubuntu@sdnhubvm:~/pox$ cd /home/ubuntu/pox && ./pox.py log.level --DEBUG forwarding.hub
+
+POX 0.5.0 (eel) / Copyright 2011-2014 James McCauley, et al.
+
+INFO:forwarding.hub:Proactive hub running.
+
+DEBUG:core:POX 0.5.0 (eel) going up...
+
+DEBUG:core:Running on CPython (2.7.6/Jun 22 2015 18:00:18)
+
+DEBUG:core:Platform is Linux-3.13.0-27-generic-i686-with-Ubuntu-14.04-trusty
+
+INFO:core:POX 0.5.0 (eel) is up.
+
+DEBUG:openflow.of_01:Listening on 0.0.0.0:6633
+
+INFO:openflow.of_01:[00-00-00-00-00-01 1] connected
+
+INFO:forwarding.hub:Hubifying 00-00-00-00-00-01
+
+---------- 
 To test the functionality, just enter the command >pingall 
 
 *** Ping: testing ping reachability
+
 h1 -> h2 h3 
+
 h2 -> h1 h3 
+
 h3 -> h1 h2 
+
 *** Results: 0% dropped (6/6 received)
+
+
 
 b. Modify the above code in order to turn the hub into a learning switch
 
