@@ -110,6 +110,9 @@ h3 -> h1 h2
 
 *** Results: 0% dropped (6/6 received)
 
+The command to start the controller and wireshark image can be seen here:
+[Pingall in hub](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/8)
+
 
 
 b. Modify the above code in order to turn the hub into a learning switch
