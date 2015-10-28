@@ -74,6 +74,14 @@ a. Take the code of a simple hub
 
 [Simple hub in pox controller](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/SimpleHub.py)
 
+To test the functionality, just enter the command >pingall 
+
+*** Ping: testing ping reachability
+h1 -> h2 h3 
+h2 -> h1 h3 
+h3 -> h1 h2 
+*** Results: 0% dropped (6/6 received)
+
 b. Modify the above code in order to turn the hub into a learning switch
 
 [Learning switch](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/LearningSwitch.py)
