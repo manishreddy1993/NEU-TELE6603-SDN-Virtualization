@@ -68,9 +68,10 @@ Summary:
 
 #####Question 2
 
-Develop and test an OpenFlow 1.5.1  (https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.1.pdf) based SDN controller 
+##Develop and test an OpenFlow 1.5.1 based SDN controller.
+Since OpenFlow 1.5.1 enable vSwitch was not found, I have implemented on 1.1
 
-a. Take the code of a simple hub
+##a. Take the code of a simple hub
 
 [Simple hub in pox controller](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/SimpleHub.py)
 
@@ -115,7 +116,7 @@ The command to start the controller and wireshark image can be seen here:
 
 
 
-b. Modify the above code in order to turn the hub into a learning switch
+##b. Modify the above code in order to turn the hub into a learning switch
 
 [Learning switch](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/LearningSwitch.py)
 
@@ -154,17 +155,14 @@ b. Modify the above code in order to turn the hub into a learning switch
  
  Flow goes out the appopriate port and  Send the packet out appropriate port
 
-c. Modify the above code to develop an OpenFlow 1.5.1 based learning switch
-
-
 
 #####Question 3
 
-Develop and test an SDN-enabled IPv4 router:
+##Develop and test an SDN-enabled IPv4 router:
 
-a. Write and test(by writing router application) the TTL decrement(vendor extension) to beacon
+##a. Write and test(by writing router application) the TTL decrement(vendor extension) to beacon
 
-b. For example, you can implement LPM, ARP and ping handling
+##b. For example, you can implement LPM, ARP and ping handling
 
 An IP router can be distinguished from other sorts of packet switching devices in that a router examines the IP protocol header as part of the switching process. It generally removes the Link Layer header a message was received with, modifies the IP header, and replaces the Link Layer header for retransmission. Each network node will have a configured subnet. If a packet is destined for a host within that subnet, the node acts as a switch and forwards the packet with no changes, to a known port or broadcast, just like in the previous exercise. If a packet is destined for some IP address for which the router knows the next hop, it should modify the layer-2 destination and forward the packet to the correct port.
 
