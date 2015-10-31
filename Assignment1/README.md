@@ -75,6 +75,14 @@ Since OpenFlow 1.5.1 enable vSwitch was not found, I have implemented on 1.1
 
 [Simple hub in pox controller](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/SimpleHub.py)
 
+The mininet topology that is used is a switch that is connected to three hosts to test the functionality.
+
+Enter these commands on the mininet emulator to create the topology.
+
+ $ sudo mn -c
+ 
+ $ sudo mn --topo single,3 --mac --switch ovsk --controller remote
+
 Wait until the application indicates that the OpenFlow switch has connected. When the switch connects, POX will print something like this:
 
 ----------
@@ -114,7 +122,27 @@ h3 -> h1 h2
 The command to start the controller and wireshark image can be seen here:
 [Pingall in hub](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/8)
 
+#####Verify Hub Behavior with tcpdump
 
+Now we verify that hosts can ping each other, and that all hosts see the exact same traffic - the behavior of a hub. To do this, we'll create xterms for each host and view the traffic in each. In the Mininet console, start up three xterms:
+
+ mininet> xterm h1 h2 h3
+
+In the xterms for h2 and h3, run tcpdump, a utility to print the packets seen by a host:
+
+ # tcpdump -XX -n -i h2-eth0
+
+and respectively:
+
+ # tcpdump -XX -n -i h3-eth0
+
+In the xterm for h1, send a ping:
+
+ # ping -c1 10.0.0.2
+
+The ping packets are now going up to the controller, which then floods them out all interfaces except the sending one. You should see identical ARP and ICMP packets corresponding to the ping in both xterms running tcpdump. This is how a hub works; it sends all packets to every port on the network.
+
+[Tcpdump at h2 and h3 showing identical ARP and ICMP requests](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/13)
 
 #####b. Modify the above code in order to turn the hub into a learning switch
 
