@@ -17,3 +17,5 @@ References:
 [POX Controller](https://github.com/noxrepo/pox)
 
 [IPV6 in SDN](https://www.opennetworking.org/?p=1179&option=com_wordpress&Itemid=316)
+
+[RFC for IPV6 Router](https://tools.ietf.org/html/rfc6204)
