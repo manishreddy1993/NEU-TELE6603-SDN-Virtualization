@@ -1,5 +1,5 @@
 # NEU-TELE6603-SDN-Virtualization
-##Assignments of TELE 6603 : Software defined Networking and Network Function Virtualization
+##Assignment of TELE 6603 : Software defined Networking and Network Function Virtualization
 
 ####Assignment 1
 
@@ -347,14 +347,7 @@ The following image shows the wireshark capture of a host on one network pinging
 
 #####Develop and test an SDN-enabled IPv6 router
 
-
-
-
-
-
-
-
-
+ 
 
 
 
