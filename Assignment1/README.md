@@ -352,6 +352,9 @@ Changes that have to be made in ipv4 router application are:
 
 [IPV6 router](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/IPv6router.py)
 
+This code is taken from ryu controller's rest.router file which behaves like an ipv4 router.
+Changes made to this file to work as an ipv6 router are not working on ryu.
+
 1. Address : 128 bits have to accepted in ipv6 address where an ipv4 address has only 32 bits
 2. Packet Size : 1280 bytes required without fragmentation 
 3. Checksum can be removed in the header.
