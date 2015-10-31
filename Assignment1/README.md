@@ -8,6 +8,7 @@ Test the basic operations and messages of OpenFlow and then write a brief report
 For example, you can use Mininet and Wireshark platforms.
 
 As a part of the assignment, I have made use of Mininet emulator, Oracle VM VirtualBox, and wireshark dissector, and xming for windows.The controller that is used is a POX controller and OpenFlow 1.0 standard is used.
+For the later part of the assignment, RYU controller was used and OpenFlow 1.3 standard was followed. It was also run Oracle VM VirtualBox. 
 
 ####The steps that were followed during the setup are:
  
