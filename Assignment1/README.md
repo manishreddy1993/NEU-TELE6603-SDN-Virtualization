@@ -47,7 +47,7 @@ FlowMod Message - This is one of the main messages, it allows the controller to 
 
 SetConfiguration - The controller sends the OFPT_SET_CONFIG message to the switch. This includes the set of flags and Max bytes of packet that datapath should send to the controller.
 
-Summary:
+Report:
 
 1. Hello:	Controller->Switch	following the TCP handshake, the controller sends its version number to the switch.
 
@@ -66,6 +66,29 @@ Summary:
 8. Flow-Mod:	Controller->Switch	instructs a switch to add a particular flow to its flow table.
 
 9. Flow-Expired:	Switch->Controller	a flow timed out after a period of inactivity.
+
+OpenFlow Protocol supports three types of messages. These are Controller-to-Switch, Asynchronous and Symmetric.
+
+Controller-to-Switch messages are always initiated by the Controller.Switch initiates the asynchronous messages. Either controller or Switch can initiate symmetric messages.
+
+Controller-to-Switch Messages
+
+Once an OpenFlow channel is established, a Controller can communicate with the switch per request/reply protocol.
+
+A Controller can request supported features from a switch. The switch must reply with supported features and capabilities.
+
+A Controller can inquire current configuration state of a switch and then modify it through controller-to-switch messages.
+
+A Controller can send packet-out messages through a specified port on a switch, as well as forward packets received by a switch.
+
+A Controller can use Barrier request/reply messages to ensure that message dependencies have been met or receive notifications of completed operations.
+
+A Controller can set and query filters on asynchronous messages from a switch using Asynchronous-Configuration message type.
+
+In a multi-controller environment, a controller can request its role from a switch.
+
+A Switch can only respond to a Controller query.
+
 
 #####Question 2
 
