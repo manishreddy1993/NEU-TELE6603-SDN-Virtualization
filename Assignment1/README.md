@@ -244,8 +244,6 @@ root@ryu-vm:~# curl -X POST -d '{"address": "192.168.30.1/24"}' http://localhost
 
 root@ryu-vm:~# curl -X POST -d '{"address": "192.168.10.20/24"}' http://localhost:8080/router/0000000000000003
 
--------
-
 2. Default gateways are added:
 
 host: h1:
@@ -260,8 +258,6 @@ host: h3:
 
 root@ryu-vm:~# ip route add default via 192.168.30.1
 
------------------
-
 3.To set router s2 as the default route of router s1, and set router s1 as the default route of router s2, and router s2 as the default route of router s3, these commands are entered on the controller.
 
 root@ryu-vm:~# curl -X POST -d '{"gateway": "172.16.30.1"}' http://localhost:8080/router/0000000000000001
@@ -270,11 +266,11 @@ root@ryu-vm:~# curl -X POST -d '{"gateway": "172.16.30.30"}' http://localhost:80
 
 root@ryu-vm:~# curl -X POST -d '{"gateway": "192.168.10.1"}' http://localhost:8080/router/0000000000000003
 
-4. To set the static route on s2,
+4.To set the static route on s2,
 
 root@ryu-vm:~# curl -X POST -d '{"destination": "192.168.30.0/24", "gateway": "192.168.10.20"}' http://localhost:8080/router/0000000000000002
 
-5. Now verify if the router is performing the basc tasks and required tasks of ARP handling, LPM and ping handling.
+5.Now verify if the router is performing the basc tasks and required tasks of ARP handling, LPM and ping handling.
 
 The following image shows the wireshark capture of a host on one network pinging the host on another network. Also, it handles ARP for IP to MAC address resolution. A host of one network needs to know the MAC address of the other host it has to contact. This is provided with the help or ARP which broadcasts the IP address of the required MAC address' host. The host send it MAC address to the switch which then will be able to send the packets sent by the sender.
 
