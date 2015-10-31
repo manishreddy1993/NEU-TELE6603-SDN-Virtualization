@@ -262,7 +262,7 @@ root@ryu-vm:~# ip addr add 192.168.30.10/24 dev h3-eth0
 To start the application, enter the following command on the controller:
 ryu-manager ryu.app.rest_router
 
-####4. Now, corresponding interface subnets have to be added to the openvswitch. This API makes use of restful services. Hence, a simple HTTP POST command is used to configure the subnets and gateways on the vswitch.
+####4. Now, corresponding interface subnets have to be added to the openvswitch. This API makes use of restful services. Hence,simple HTTP POST commands are used to configure the subnets and gateways on the vswitch.
 
 The commands are as follows:
 1.On the controller, 
