@@ -347,6 +347,11 @@ The following image shows the wireshark capture of a host on one network pinging
 
 #####Develop and test an SDN-enabled IPv6 router
 
+
+Changes that have to be made in ipv4 router application are:
+
+[IPV6 router](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/blob/master/Assignment1/IPv6router.py)
+
 1. Address : 128 bits have to accepted in ipv6 address where an ipv4 address has only 32 bits
 2. Packet Size : 1280 bytes required without fragmentation 
 3. Checksum can be removed in the header.
