@@ -155,6 +155,7 @@ The command to start the controller and wireshark image can be seen here:
  
  Flow goes out the appopriate port and  Send the packet out appropriate port
 
+[Snapshots and Packet Captures Learning Switch](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/9)
 
 #####Question 3
 
@@ -166,6 +167,47 @@ The command to start the controller and wireshark image can be seen here:
 
 An IP router can be distinguished from other sorts of packet switching devices in that a router examines the IP protocol header as part of the switching process. It generally removes the Link Layer header a message was received with, modifies the IP header, and replaces the Link Layer header for retransmission. Each network node will have a configured subnet. If a packet is destined for a host within that subnet, the node acts as a switch and forwards the packet with no changes, to a known port or broadcast, just like in the previous exercise. If a packet is destined for some IP address for which the router knows the next hop, it should modify the layer-2 destination and forward the packet to the correct port.
 
+The router application is run on a ryu controller. The topology that has been created is [Router Toplogy](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/10)
+
+####Steps to test the router application code on ryu controller are:
+
+####1.Create the topology that is shown in the diagram on the mininet emulator 
+----------
+ryu@ryu-vm:~$ sudo mn --topo linear,3 --mac --switch ovsk --controller remote -x
+*** Creating network
+*** Adding controller
+Unable to contact the remote controller at 127.0.0.1:6633
+*** Adding hosts:
+h1 h2 h3
+*** Adding switches:
+s1 s2 s3
+*** Adding links:
+(h1, s1) (h2, s2) (h3, s3) (s1, s2) (s2, s3)
+*** Configuring hosts
+h1 h2 h3
+*** Running terms on localhost:10.0
+*** Starting controller
+*** Starting 3 switches
+s1 s2 s3
+
+*** Starting CLI:
+mininet>
+
+####2.Delete the ip addresses that are automatically attached to each host.
+host: h1:
+root@ryu-vm:~# ip addr del 10.0.0.1/8 dev h1-eth0
+root@ryu-vm:~# ip addr add 172.16.20.10/24 dev h1-eth0
+host: h2:
+
+root@ryu-vm:~# ip addr del 10.0.0.2/8 dev h2-eth0
+root@ryu-vm:~# ip addr add 172.16.10.10/24 dev h2-eth0
+host: h3:
+
+root@ryu-vm:~# ip addr del 10.0.0.3/8 dev h3-eth0
+root@ryu-vm:~# ip addr add 192.168.30.10/24 dev h3-eth0
+[Snapshot of deleting the ip addresses on each host](
+
+####3.Start rest_router on xterm of controller.
 
 
 
