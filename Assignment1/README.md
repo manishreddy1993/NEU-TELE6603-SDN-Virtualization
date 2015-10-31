@@ -195,19 +195,92 @@ mininet>
 
 ####2.Delete the ip addresses that are automatically attached to each host.
 host: h1:
+
 root@ryu-vm:~# ip addr del 10.0.0.1/8 dev h1-eth0
+
 root@ryu-vm:~# ip addr add 172.16.20.10/24 dev h1-eth0
+
 host: h2:
 
 root@ryu-vm:~# ip addr del 10.0.0.2/8 dev h2-eth0
+
 root@ryu-vm:~# ip addr add 172.16.10.10/24 dev h2-eth0
+
 host: h3:
 
 root@ryu-vm:~# ip addr del 10.0.0.3/8 dev h3-eth0
+
 root@ryu-vm:~# ip addr add 192.168.30.10/24 dev h3-eth0
-[Snapshot of deleting the ip addresses on each host](
+[Snapshot of deleting the ip addresses on each host](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/11)
 
 ####3.Start rest_router on xterm of controller.
+[IPv4 Router Application](https://github.com/osrg/ryu/blob/master/ryu/app/rest_router.py)
+
+To start the application, enter the following command on the controller:
+ryu-manager ryu.app.rest_router
+
+####4. Now, corresponding interface subnets have to be added to the openvswitch. This API makes use of restful services. Hence, a simple HTTP POST command is used to configure the subnets and gateways on the vswitch.
+
+The commands are as follows:
+1.On the controller, 
+
+To set the addresses “172.16.20.1/24” and “172.16.30.30/24” for router s1
+
+root@ryu-vm:~# curl -X POST -d '{"address":"172.16.20.1/24"}'http://localhost:8080/router/0000000000000001
+
+root@ryu-vm:~# curl -X POST -d '{"address": "172.16.30.30/24"}' http://localhost:8080/router/0000000000000001
+
+To set the addresses “172.16.10.1/24”, “172.16.30.1/24” and “192.168.10.1/24” for router s2.
+
+root@ryu-vm:~# curl -X POST -d '{"address":"172.16.10.1/24"}' http://localhost:8080/router/0000000000000002
+
+root@ryu-vm:~# curl -X POST -d '{"address": "172.16.30.1/24"}' http://localhost:8080/router/0000000000000002
+
+root@ryu-vm:~# curl -X POST -d '{"address": "192.168.10.1/24"}' http://localhost:8080/router/0000000000000002
+
+To set the addresses “192.168.30.1/24” and “192.168.10.20/24” for router s3.
+
+root@ryu-vm:~# curl -X POST -d '{"address": "192.168.30.1/24"}' http://localhost:8080/router/0000000000000003
+
+root@ryu-vm:~# curl -X POST -d '{"address": "192.168.10.20/24"}' http://localhost:8080/router/0000000000000003
+
+-------
+
+2. Default gateways are added:
+
+host: h1:
+
+root@ryu-vm:~# ip route add default via 172.16.20.1
+
+host: h2:
+
+root@ryu-vm:~# ip route add default via 172.16.10.1
+
+host: h3:
+
+root@ryu-vm:~# ip route add default via 192.168.30.1
+
+-----------------
+
+3.To set router s2 as the default route of router s1, and set router s1 as the default route of router s2, and router s2 as the default route of router s3, these commands are entered on the controller.
+
+root@ryu-vm:~# curl -X POST -d '{"gateway": "172.16.30.1"}' http://localhost:8080/router/0000000000000001
+
+root@ryu-vm:~# curl -X POST -d '{"gateway": "172.16.30.30"}' http://localhost:8080/router/0000000000000002
+
+root@ryu-vm:~# curl -X POST -d '{"gateway": "192.168.10.1"}' http://localhost:8080/router/0000000000000003
+
+4. To set the static route on s2,
+
+root@ryu-vm:~# curl -X POST -d '{"destination": "192.168.30.0/24", "gateway": "192.168.10.20"}' http://localhost:8080/router/0000000000000002
+
+5. Now verify if the router is performing the basc tasks and required tasks of ARP handling, LPM and ping handling.
+
+The following image shows the wireshark capture of a host on one network pinging the host on another network. Also, it handles ARP for IP to MAC address resolution. A host of one network needs to know the MAC address of the other host it has to contact. This is provided with the help or ARP which broadcasts the IP address of the required MAC address' host. The host send it MAC address to the switch which then will be able to send the packets sent by the sender.
+
+[IPV4 functionality](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/12)
+
+
 
 
 
