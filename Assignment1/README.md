@@ -172,22 +172,37 @@ The router application is run on a ryu controller. The topology that has been cr
 ####Steps to test the router application code on ryu controller are:
 
 ####1.Create the topology that is shown in the diagram on the mininet emulator 
-----------
+
 ryu@ryu-vm:~$ sudo mn --topo linear,3 --mac --switch ovsk --controller remote -x
+
 *** Creating network
+
 *** Adding controller
+
 Unable to contact the remote controller at 127.0.0.1:6633
+
 *** Adding hosts:
+
 h1 h2 h3
+
 *** Adding switches:
+
 s1 s2 s3
+
 *** Adding links:
+
 (h1, s1) (h2, s2) (h3, s3) (s1, s2) (s2, s3)
+
 *** Configuring hosts
+
 h1 h2 h3
+
 *** Running terms on localhost:10.0
+
 *** Starting controller
+
 *** Starting 3 switches
+
 s1 s2 s3
 
 *** Starting CLI:
