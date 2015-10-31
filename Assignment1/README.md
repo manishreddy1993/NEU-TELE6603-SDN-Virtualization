@@ -343,6 +343,10 @@ The following image shows the wireshark capture of a host on one network pinging
 
 [IPV4 functionality](https://github.com/manishreddy1993/NEU-TELE6603-SDN-Virtualization/issues/12)
 
+#####Question 4
+
+#####Develop and test an SDN-enabled IPv6 router
+
 
 
 
